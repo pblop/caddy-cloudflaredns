@@ -3,10 +3,12 @@
 name: Docker Build & Push
 
 on:
+  schedule:
+    - cron: '26 2 * * *'
   push:
-    tags:
-      - "*"
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    branches: [ "master" ]
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
 
 env:
   DOCKER_USERNAME: pblop
